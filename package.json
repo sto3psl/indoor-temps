@@ -2,6 +2,15 @@
   "name": "my-node-app",
   "version": "1.0.0",
   "dependencies": {
-    "ws": "^8.0.0"
+    "bme280": "2.1.1",
+    "ws": "8.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "16.6.1",
+    "@vercel/ncc": "0.29.1",
+    "typescript": "4.3.5"
+  },
+  "volta": {
+    "node": "16.6.2"
   }
 }
