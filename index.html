@@ -47,8 +47,9 @@
         align-items: center;
         width: 100%;
         height: 100%;
-        /* background: hsl(var(--rotation) 86% 10%); */
         border-radius: var(--space);
+
+        text-align: center;
       }
 
       .temp {
@@ -65,8 +66,8 @@
       .temp div::after {
         display: block;
         text-align: center;
-        content: " °C";
-        font-size: 50%;
+        content: "Temperatur (°C)";
+        font-size: 40%;
         color: hsl(var(--rotation) 86% 30%);
       }
 
@@ -76,10 +77,10 @@
       }
 
       .humidity div::after {
-        content: " %";
+        content: "Luftfeuchtigkeit (%)";
         display: block;
         text-align: center;
-        font-size: 50%;
+        font-size: 40%;
         color: hsl(var(--rotation) 86% 30%);
       }
 
@@ -89,10 +90,10 @@
       }
 
       .pressure div::after {
-        content: " hPa";
+        content: "Luftdruck (hPa)";
         display: block;
         text-align: center;
-        font-size: 50%;
+        font-size: 40%;
         color: hsl(var(--rotation) 86% 30%);
       }
     </style>
@@ -117,9 +118,9 @@
         document.querySelector(".temp div").innerText =
           data.temperature.toFixed(2);
         document.querySelector(".humidity div").innerText =
-          data.humidity.toFixed(1);
+          data.humidity.toFixed(0);
         document.querySelector(".pressure div").innerText =
-          data.pressure.toFixed(1);
+          data.pressure.toFixed(0);
       });
     </script>
   </body>
