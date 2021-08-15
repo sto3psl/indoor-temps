@@ -1,0 +1,65 @@
+<meta charset="utf-8">
+<style>
+html, body {
+  font-family: -apple-system, Roboto, sans-serif;
+}
+
+main {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template: 
+    "temp temp humidity"
+    "temp temp pressure";
+    
+  grid-template-cols: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  place-items: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.temp {
+  font-size: 10vh;
+  grid-area: temp;
+}
+
+.humidity {
+  font-size: 5vh;
+  grid-area: humidity;
+}
+
+.pressure {
+  font-size: 5vh;
+  grid-area: pressure;
+}
+
+</style>
+
+<main>
+  <div class="temp"></div>
+  <div class="humidity"></div>
+  <div class="pressure"></div>
+</main>
+
+<script>
+
+// Create WebSocket connection.
+const socket = new WebSocket('ws://localhost:3001');
+
+// Connection opened
+socket.addEventListener('open', function (event) {
+    socket.send('Hello Server!');
+});
+
+// Listen for messages
+socket.addEventListener('message', function (event) {
+    console.log('Message from server ', event.data);
+    
+    const data = JSON.parse(event.data)
+    
+    document.querySelector('.temp').innerText = `${data.temp.toFixed(2)}°C`
+    document.querySelector('.humidity').innerText = data.humidity.toFixed(2)
+    document.querySelector('.pressure').innerText = data.pressure.toFixed(2)
+});
+
+</script>
